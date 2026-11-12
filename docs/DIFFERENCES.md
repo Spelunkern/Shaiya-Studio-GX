@@ -22,3 +22,6 @@ every place where the behavior is not byte-for-byte the same, and why.
 | `SahArchive::Holes::consume` | when the consumed hole is the second to last, the last hole is dropped and the consumed one stays | removes the consumed hole |
 | `SahArchive::saveHoles` | when holes.bin changes size, the new table is appended after the old one in the same buffer (the old table is what gets read back) and the index keeps the old holes.bin size | writes the updated table and records its size |
 | `sub_418C00` (decrypt) | a stored plain size larger than the body reads past the buffer | rejected as an error |
+| `Monster::read` (EP4/EP5 `Monster.SData`) | the 5th attack byte is ignored and the third attack type is taken from the 3rd byte; saving then writes that type over the 5th byte, changing about 2,000 bytes of an untouched file | the third attack type is read from the 5th byte, so an untouched file saves identical |
+| `Monster::read` (`MonsterEx.SData`) | a drop count above 9 writes past the drop arrays | extra drops are read and ignored |
+| `Monster::assignFrom` (paste) | appends the source name to the current name | replaces the name |

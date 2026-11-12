@@ -112,3 +112,19 @@ func TestCashRoundTrip(t *testing.T) {
 	db := stable(t, "DBItemSellData", func() table { return NewCashProducts(0) }, testFile(t, "Cash/DBItemSellData.SData"), 1252, Flnt).(*CashProducts)
 	t.Logf("%d DB products, version %#x, first %q", len(db.Products), db.Version, db.Products[0].Code)
 }
+
+func TestMonstersRoundTrip(t *testing.T) {
+	for _, n := range []string{"Monster.SData", "Monster_1252.SData"} {
+		s := NewMonsters()
+		roundTrip(t, n, s, testFile(t, "Monster/"+n), 1252, File)
+		t.Logf("%s: %d monsters, format %#x", n, len(s.Monsters), s.Format)
+	}
+	db := NewMonsters()
+	roundTrip(t, "DBMonsterData", db, testFile(t, "Monster/DBMonsterData.SData"), 1252, Flnt)
+	stable(t, "DBMonsterText", func() table {
+		x := NewMonsters()
+		x.Read(testFile(t, "Monster/DBMonsterData.SData"), 1252, Flnt)
+		return x
+	}, testFile(t, "Monster/DBMonsterText_USA.SData"), 1252, Ltxt)
+	t.Logf("DB: %d monsters, first %q", len(db.Monsters), db.Monsters[0].Name)
+}
