@@ -29,6 +29,7 @@ Some tests read real client files when these variables are set:
 |---|---|
 | `SHSTUDIO_SAF` | a client `data.saf` (its `data.sah` next to it) |
 | `SHSTUDIO_SDATA` | an encrypted `DB*Data.SData` |
+| `SHSTUDIO_TESTDATA` | a folder of sample files (`Item/`, `Monster/`, `NpcQuest/`, ... as in Parsec's test data) |
 
 ## Layout
 
@@ -39,6 +40,11 @@ Some tests read real client files when these variables are set:
 | `internal/binstream` | binary reader/writer | `src/core` iStream/oStream |
 | `internal/natural` | logical (natural) name order | `StrCmpLogicalW` |
 | `internal/archive` | data.sah/data.saf tree, read/write, pack, extract | `src/archive` |
+| `internal/content` | workspace folder / archive file access | `src/archive` providers |
+| `internal/sdata` | SData tables and BinarySData DB files | `src/data` |
+| `internal/prefs` | settings.ini | `src/core` IniFile, `src/app` Preferences |
+| `internal/app` | main window, workspace tree, documents, dialogs | `src/app` |
+| `internal/ui/filedlg` | file and folder picker | `src/ui/dialogs` FileDialogs |
 
 ## Differences from shStudio
 
