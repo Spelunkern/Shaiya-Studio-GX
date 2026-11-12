@@ -54,6 +54,9 @@ type sdataDoc struct {
 	// prefix of the DB text files ("BinarySData\\DBItemText_").
 	textPrefix string
 
+	// afterSave runs after a successful save (view-specific scripts).
+	afterSave func(d *sdataDoc)
+
 	modified bool
 	status   string
 	ready    bool
@@ -301,6 +304,9 @@ func (d *sdataDoc) save(a *App) bool {
 		return false
 	}
 	d.setModified(false)
+	if d.afterSave != nil {
+		d.afterSave(d)
+	}
 	return true
 }
 
