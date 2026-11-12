@@ -113,3 +113,48 @@ func (a *App) nextID() int {
 	a.idSeq++
 	return a.idSeq
 }
+
+// Answers of askSave.
+const (
+	answerYes = iota
+	answerNo
+	answerCancel
+)
+
+// askSave asks whether to save a modified document (Doc::onClose).
+func (a *App) askSave(path string, then func(answer int)) {
+	id := "Shaiya Studio GX##save" + strconv.Itoa(a.nextID())
+	opened := false
+	a.pushModal(func() bool {
+		if !opened {
+			imgui.OpenPopupStr(id)
+			opened = true
+		}
+		imgui.SetNextWindowPosV(imgui.MainViewport().Center(), imgui.CondAppearing, imgui.NewVec2(0.5, 0.5))
+		answer := -1
+		if imgui.BeginPopupModalV(id, nil, imgui.WindowFlagsAlwaysAutoResize) {
+			imgui.TextUnformatted("Do you want to save the changes made to:")
+			imgui.TextUnformatted(path)
+			if imgui.Button("Yes") {
+				answer = answerYes
+			}
+			imgui.SameLine()
+			if imgui.Button("No") {
+				answer = answerNo
+			}
+			imgui.SameLine()
+			if imgui.Button("Cancel") || imgui.IsKeyPressedBool(imgui.KeyEscape) {
+				answer = answerCancel
+			}
+			if answer >= 0 {
+				imgui.CloseCurrentPopup()
+			}
+			imgui.EndPopup()
+		}
+		if answer >= 0 {
+			then(answer)
+			return true
+		}
+		return false
+	})
+}

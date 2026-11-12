@@ -196,3 +196,6 @@ func crLfToLf(s string) string {
 	}
 	return b.String()
 }
+
+// FormatInt formats an int in base 10.
+func FormatInt(i int) string { return fmt.Sprint(i) }

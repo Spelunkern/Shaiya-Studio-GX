@@ -90,7 +90,24 @@ func (a *App) openDocument(f *archive.File, path string, reload bool) bool {
 		a.status = `The file "` + name + `" is not supported.`
 		return false
 	}
-	a.docs = append(a.docs, &openDoc{doc: doc, open: true, focus: true})
+	if f.State&archive.StateDirty == 0 {
+		f.State |= archive.StateLoaded
+	}
+	od := &openDoc{doc: doc, open: true, focus: true}
+	a.docs = append(a.docs, od)
+	if l, ok := doc.(loadable); ok {
+		l.load(a, func(err error) {
+			if err != nil {
+				a.closeDocument(doc)
+				f.State &^= archive.StateLoaded
+				a.status = `The file "` + name + `" can not be loaded or processed: ` + err.Error()
+				return
+			}
+			if r, ok := doc.(interface{ setReady() }); ok {
+				r.setReady()
+			}
+		})
+	}
 	return true
 }
 
@@ -153,6 +170,21 @@ func (a *App) drawDocs() {
 		}
 	}
 	a.docs = kept
+}
+
+// closeDocument removes a document window without asking.
+func (a *App) closeDocument(doc Document) {
+	for i, d := range a.docs {
+		if d.doc == doc {
+			a.docs = append(a.docs[:i], a.docs[i+1:]...)
+			return
+		}
+	}
+}
+
+// loadable is a document that loads its data after it is created.
+type loadable interface {
+	load(a *App, done func(err error))
 }
 
 // closeAll closes every document (Application::closeAll then
