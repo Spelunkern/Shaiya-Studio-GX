@@ -60,10 +60,16 @@ func isEncodedSAH(b []byte) bool { return len(b) >= 3 && b[0] == 0xCB && b[1] ==
 // (FolderRoot).
 type Root struct{ Folder }
 
-// stripPrefix removes the root path (or a leading "\\\\") from rel.
+// stripPrefix removes the root path (or a leading "\\\\") from rel. Disk
+// paths of a scanned workspace may use the OS separator; the result always
+// uses Sep.
 func (r *Root) stripPrefix(rel string) string {
 	if r.Path != "" && strings.HasPrefix(rel, r.Path) {
-		return rel[len(r.Path):]
+		rel = rel[len(r.Path):]
+		if os.PathSeparator != '\\' {
+			rel = strings.ReplaceAll(rel, string(os.PathSeparator), Sep)
+		}
+		return rel
 	}
 	if strings.HasPrefix(rel, `\\`) {
 		return strings.TrimLeft(rel, `\`)
