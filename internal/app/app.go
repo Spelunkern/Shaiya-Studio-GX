@@ -21,19 +21,20 @@ const AppName = "Shaiya Studio GX"
 
 // App is the running program.
 type App struct {
-	be      backend.Backend[glfwbackend.GLFWWindowFlags]
-	client  *client
-	server  *serverNode
-	sql     *sqlNode
-	tree    workspaceTree
-	docs    []*openDoc
-	modals  []func() bool
-	status  string
-	busy    bool
-	canPack bool
-	idSeq   int
-	quit    bool
-	dark    bool
+	be         backend.Backend[glfwbackend.GLFWWindowFlags]
+	client     *client
+	server     *serverNode
+	sql        *sqlNode
+	tree       workspaceTree
+	docs       []*openDoc
+	modals     []*modal
+	modalLevel int
+	status     string
+	busy       bool
+	canPack    bool
+	idSeq      int
+	quit       bool
+	dark       bool
 
 	afterOpen func() // debug hook run once the client is open
 

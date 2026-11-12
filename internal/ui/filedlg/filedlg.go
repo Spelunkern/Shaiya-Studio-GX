@@ -32,6 +32,8 @@ type Dialog struct {
 	Filters []Filter // for files; the first is the default
 	// Accept, when set, validates a chosen folder (SelectFolder).
 	Accept func(dir string) bool
+	// Inner draws dialogs stacked above this one (inside its popup).
+	Inner func()
 
 	dir     string
 	name    string
@@ -220,6 +222,9 @@ func (d *Dialog) Draw() (done, ok bool) {
 	if imgui.Button("Cancel") || imgui.IsKeyPressedBool(imgui.KeyEscape) {
 		d.done, d.ok = true, false
 		imgui.CloseCurrentPopup()
+	}
+	if d.Inner != nil {
+		d.Inner()
 	}
 	if d.done {
 		return true, d.ok

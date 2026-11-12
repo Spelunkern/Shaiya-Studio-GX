@@ -89,6 +89,7 @@ func (a *App) chooseCodepage(fileName string, then func(cp int)) {
 			if done {
 				imgui.CloseCurrentPopup()
 			}
+			a.inner()
 			imgui.EndPopup()
 		}
 		if done {

@@ -16,18 +16,45 @@ const (
 	iconWarn  = 0x30
 )
 
-// pushModal queues a modal UI step; draw returns true when it is finished.
-// Modals run one at a time, in order (the C++ code nests DoModal calls).
-func (a *App) pushModal(draw func() bool) { a.modals = append(a.modals, draw) }
+type modal struct {
+	draw func() bool
+	done bool
+}
+
+// pushModal adds a modal UI step; draw returns true when it is finished.
+// Modals form a stack: each open modal draws the next ones inside its own
+// popup (inner), so a dialog opened from another one stays on top of it,
+// like the nested DoModal calls of shStudio.
+func (a *App) pushModal(draw func() bool) { a.modals = append(a.modals, &modal{draw: draw}) }
 
 func (a *App) drawModals() {
-	if len(a.modals) == 0 {
+	a.modalLevel = -1
+	a.runModal(0)
+	kept := a.modals[:0]
+	for _, m := range a.modals {
+		if !m.done {
+			kept = append(kept, m)
+		}
+	}
+	a.modals = kept
+}
+
+func (a *App) runModal(i int) {
+	if i >= len(a.modals) {
 		return
 	}
-	if a.modals[0]() {
-		a.modals = a.modals[1:]
+	prev := a.modalLevel
+	a.modalLevel = i
+	m := a.modals[i]
+	if !m.done && m.draw() {
+		m.done = true
 	}
+	a.modalLevel = prev
 }
+
+// inner draws the modals stacked above the current one; every modal calls
+// it inside its popup, before EndPopup.
+func (a *App) inner() { a.runModal(a.modalLevel + 1) }
 
 // alert shows a message box (AlertDial::alert); then runs after OK.
 func (a *App) alert(text string, icon int, then func()) {
@@ -55,6 +82,7 @@ func (a *App) alert(text string, icon int, then func()) {
 				imgui.CloseCurrentPopup()
 				done = true
 			}
+			a.inner()
 			imgui.EndPopup()
 		}
 		if done && then != nil {
@@ -89,6 +117,7 @@ func (a *App) confirm(text string, then func(yes bool)) {
 			if done {
 				imgui.CloseCurrentPopup()
 			}
+			a.inner()
 			imgui.EndPopup()
 		}
 		if done {
@@ -100,6 +129,7 @@ func (a *App) confirm(text string, then func(yes bool)) {
 
 // pickFile shows the file/folder dialog and calls then with the result.
 func (a *App) pickFile(d *filedlg.Dialog, then func(path string)) {
+	d.Inner = a.inner
 	a.pushModal(func() bool {
 		done, ok := d.Draw()
 		if done && ok {
@@ -149,6 +179,7 @@ func (a *App) askSave(path string, then func(answer int)) {
 			if answer >= 0 {
 				imgui.CloseCurrentPopup()
 			}
+			a.inner()
 			imgui.EndPopup()
 		}
 		if answer >= 0 {

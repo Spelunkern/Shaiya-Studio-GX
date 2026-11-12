@@ -94,6 +94,7 @@ func (a *App) drawTask(t *task) bool {
 		} else if imgui.Button("Cancel") {
 			t.cancel.Store(true)
 		}
+		a.inner()
 		imgui.EndPopup()
 	}
 	a.wake()

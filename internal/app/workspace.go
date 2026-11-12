@@ -21,6 +21,7 @@ type client struct {
 	provider content.Provider
 	root     *archive.Root
 	format   int
+	data     clientData
 }
 
 func newClient() *client { return &client{name: "Client", root: &archive.Root{}} }
@@ -253,6 +254,7 @@ func (a *App) closeClient() {
 	}
 	c.provider = nil
 	c.root = &archive.Root{}
+	c.data = clientData{}
 	content.Current = nil
 	a.releaseIcons()
 	a.tree.clear()
