@@ -163,3 +163,57 @@ func TestSkillsRoundTrip(t *testing.T) {
 	}
 	t.Logf("text on EP6 table: first %q", ep6.Skills[0].Name)
 }
+
+func TestNpcQuestRoundTrip(t *testing.T) {
+	raw := func() table {
+		d := NewNpcQuest()
+		d.Options = NpcOptions{}
+		return d
+	}
+	for _, n := range []string{"NpcQuestEp5.SData", "NpcQuestEp6.SData"} {
+		d := raw().(*NpcQuest)
+		// shStudio escapes the CR LF of texts as "\n" when saving; apart
+		// from that the output must be identical.
+		in := testFile(t, "NpcQuest/"+n)
+		if err := d.Read(in, 1252, File); err != nil {
+			t.Fatal(err)
+		}
+		out, _ := d.Write(1252, File)
+		if len(out) != len(in) {
+			t.Fatalf("%s: length %d vs %d", n, len(out), len(in))
+		}
+		for i := 0; i < len(in); i++ {
+			if in[i] == out[i] {
+				continue
+			}
+			if string(in[i:i+2]) != "\r\n" || string(out[i:i+2]) != `\n` {
+				t.Fatalf("%s: differs at %d", n, i)
+			}
+			i++
+		}
+		t.Logf("%s: %d merchants, %d gate keepers, %d quests, format %#x, raw %d bytes", n, len(d.NPCs[1]),
+			len(d.NPCs[2]), len(d.Quests.Quests), d.Format, len(d.Raw))
+		// With "clean CR" on, shStudio trims CR LF, spaces and CR LF once per
+		// load, so a text can lose more on the next save: check that it
+		// converges.
+		first := NewNpcQuest()
+		first.Read(testFile(t, "NpcQuest/"+n), 1252, File)
+		out1, _ := first.Write(1252, File)
+		second := NewNpcQuest()
+		second.Read(out1, 1252, File)
+		out2, _ := second.Write(1252, File)
+		stable(t, n+" (default options)", func() table { return NewNpcQuest() }, out2, 1252, File)
+	}
+	d := raw().(*NpcQuest)
+	roundTrip(t, "NpcQuestEp8", d, testFile(t, "NpcQuest/NpcQuestEp8.SData"), 1252, Flnt)
+	t.Logf("Ep8: %d merchants, %d quests, format %#x", len(d.NPCs[1]), len(d.Quests.Quests), d.Format)
+	if err := d.Read(testFile(t, "NpcQuest/NpcQuestTrans_USA.SData"), 1252, Ltxt); err != nil {
+		t.Fatal(err)
+	}
+	q := d.Quests.Quests[0]
+	if q.Desc[:10] != "Hey there," || q.Replies[0][:13] != "Welcome back." {
+		t.Fatalf("language file texts misplaced: desc %.20q reply %.20q", q.Desc, q.Replies[0])
+	}
+	t.Logf("merchant 0: %q / %q", d.NPCs[1][0].Name, d.NPCs[1][0].Welcome)
+	t.Logf("quest %d: name %q summary %q desc %.60q reply1 %.60q", q.QuestID, q.Name, q.Summary, q.Desc, q.Replies[0])
+}
