@@ -128,3 +128,17 @@ func TestMonstersRoundTrip(t *testing.T) {
 	}, testFile(t, "Monster/DBMonsterText_USA.SData"), 1252, Ltxt)
 	t.Logf("DB: %d monsters, first %q", len(db.Monsters), db.Monsters[0].Name)
 }
+
+func TestNpcSkillsRoundTrip(t *testing.T) {
+	for _, n := range []string{"NpcSkillEp5.SData", "NpcSkillEp6.SData"} {
+		s := NewMobsSkills()
+		roundTrip(t, n, s, testFile(t, "NpcSkill/"+n), 1252, File)
+		t.Logf("%s: %d skills, format %#x", n, len(s.Skills), s.Format)
+	}
+	db := NewMobsSkills()
+	roundTrip(t, "DBNpcSkillData", db, testFile(t, "NpcSkill/DBNpcSkillData.SData"), 1252, Flnt)
+	if err := db.Read(testFile(t, "NpcSkill/DBNpcSkillText_USA.SData"), 1252, Ltxt); err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("DB: %d skills, first %q", len(db.Skills), db.Skills[0].Name)
+}
