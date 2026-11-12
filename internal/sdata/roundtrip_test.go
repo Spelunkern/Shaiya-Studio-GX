@@ -217,3 +217,12 @@ func TestNpcQuestRoundTrip(t *testing.T) {
 	t.Logf("merchant 0: %q / %q", d.NPCs[1][0].Name, d.NPCs[1][0].Welcome)
 	t.Logf("quest %d: name %q summary %q desc %.60q reply1 %.60q", q.QuestID, q.Name, q.Summary, q.Desc, q.Replies[0])
 }
+
+func TestDBTextTables(t *testing.T) {
+	for _, n := range []string{"Item/DBItemText_USA.SData", "Monster/DBMonsterText_USA.SData", "Skill/DBSkillText_USA.SData",
+		"NpcSkill/DBNpcSkillText_USA.SData", "SetItem/DBSetItemText_USA.SData"} {
+		tab := NewDBTextTable()
+		roundTrip(t, n, tab, testFile(t, n), 1252, Ltxt)
+		t.Logf("%s: %s; field 0 %q, row 0: %q", n, tab.StatusText(), tab.FieldName(0), tab.GetText(0, tab.FieldCount()-1))
+	}
+}
