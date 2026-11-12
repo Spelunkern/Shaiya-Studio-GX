@@ -170,3 +170,29 @@ func u8s(v uint8) string   { return fmt.Sprint(v) }
 func i16s(v int16) string  { return fmt.Sprint(v) }
 func u16s(v uint16) string { return fmt.Sprint(v) }
 func i32s(v int32) string  { return fmt.Sprint(v) }
+
+// lfToCrLf replaces every LF by CR LF (String::lfToCrLf).
+func lfToCrLf(s string) string { return strings.ReplaceAll(s, "\n", "\r\n") }
+
+// crLfToLf turns CR LF into LF (String::crLfToLf). Like the original, a CR
+// that is not followed by LF is kept and the character after it is dropped.
+func crLfToLf(s string) string {
+	if !strings.Contains(s, "\r") {
+		return s
+	}
+	var b strings.Builder
+	r := []rune(s)
+	for i := 0; i < len(r); i++ {
+		if r[i] != '\r' {
+			b.WriteRune(r[i])
+			continue
+		}
+		i++
+		if i < len(r) && r[i] == '\n' {
+			b.WriteRune('\n')
+		} else {
+			b.WriteRune('\r')
+		}
+	}
+	return b.String()
+}
