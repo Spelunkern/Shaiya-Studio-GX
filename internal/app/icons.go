@@ -67,3 +67,56 @@ func (a *App) drawIcon(set *icons.Set, id int, size float32) {
 	imgui.ImageV(t.ID, imgui.NewVec2(size, size),
 		imgui.NewVec2(float32(r.Min.X)/w, float32(r.Min.Y)/h), imgui.NewVec2(float32(r.Max.X)/w, float32(r.Max.Y)/h))
 }
+
+// iconTexRef returns the texture of the sheet holding id (or of the first
+// sheet) for image buttons.
+func (a *App) iconTexRef(set *icons.Set, id int) imgui.TextureRef {
+	sh, _, ok := set.Find(id)
+	if !ok {
+		if set.Empty() {
+			return imgui.TextureRef{}
+		}
+		sh = set.Sheets[0]
+	}
+	return a.sheetTexture(sh).ID
+}
+
+// iconUV returns the top-left (or bottom-right) UV of id; a missing icon
+// maps to an empty area.
+func (a *App) iconUV(set *icons.Set, id int, max bool) imgui.Vec2 {
+	sh, r, ok := set.Find(id)
+	if !ok {
+		return imgui.NewVec2(0, 0)
+	}
+	w, h := float32(sh.Image.Rect.Dx()), float32(sh.Image.Rect.Dy())
+	if max {
+		return imgui.NewVec2(float32(r.Max.X)/w, float32(r.Max.Y)/h)
+	}
+	return imgui.NewVec2(float32(r.Min.X)/w, float32(r.Min.Y)/h)
+}
+
+// pickIcon draws a grid of the icons of set (the IconPicker drop-down);
+// it returns the clicked id.
+func (a *App) pickIcon(set *icons.Set) (int, bool) {
+	n := 0
+	for _, sh := range set.Sheets {
+		for i := 0; i < sh.Count(); i++ {
+			id := sh.FirstID + i
+			if _, ok := sh.Rect(id); !ok {
+				continue
+			}
+			if n%16 != 0 {
+				imgui.SameLine()
+			}
+			n++
+			imgui.PushIDInt(int32(id))
+			clicked := imgui.ImageButtonV("##i", a.sheetTexture(sh).ID, imgui.NewVec2(32, 32),
+				a.iconUV(set, id, false), a.iconUV(set, id, true), imgui.NewVec4(0, 0, 0, 0), imgui.NewVec4(1, 1, 1, 1))
+			imgui.PopID()
+			if clicked {
+				return id, true
+			}
+		}
+	}
+	return 0, false
+}
