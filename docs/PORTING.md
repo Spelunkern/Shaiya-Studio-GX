@@ -49,8 +49,8 @@ these variables are set:
 | `SHSTUDIO_TESTDATA` | a folder of sample files (`Item/`, `Monster/`, `NpcQuest/`, `Skill/`, ...) |
 
 The UI can be checked without a person at the screen:
-`SHSTUDIO_SCREENSHOT=out.png SHSTUDIO_OPEN=<workspace or data.saf>
-SHSTUDIO_CP=<code page> SHSTUDIO_DOC=<archive path> build/shstudiogx` opens
+`SHSTUDIOGX_SCREENSHOT=out.png SHSTUDIOGX_OPEN=<workspace or data.saf>
+SHSTUDIOGX_CP=<code page> SHSTUDIOGX_DOC=<archive path> build/shstudiogx` opens
 a workspace and a document, saves a capture of the window and exits.
 
 ## UI mapping
