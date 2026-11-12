@@ -254,6 +254,7 @@ func (a *App) closeClient() {
 	c.provider = nil
 	c.root = &archive.Root{}
 	content.Current = nil
+	a.releaseIcons()
 	a.tree.clear()
 	a.canPack = false
 }

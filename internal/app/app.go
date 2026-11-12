@@ -12,6 +12,7 @@ import (
 	_ "github.com/AllenDang/cimgui-go/impl/glfw"
 	_ "github.com/AllenDang/cimgui-go/impl/opengl3"
 
+	"github.com/Spelunkern/Shaiya-Studio-GX/internal/icons"
 	"github.com/Spelunkern/Shaiya-Studio-GX/internal/prefs"
 )
 
@@ -35,6 +36,9 @@ type App struct {
 	dark    bool
 
 	afterOpen func() // debug hook run once the client is open
+
+	icons    *icons.Loader
+	textures []*backend.Texture
 }
 
 var current *App

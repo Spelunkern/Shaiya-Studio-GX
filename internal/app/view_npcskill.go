@@ -114,6 +114,9 @@ func (v *npcSkillView) loaded(d *sdataDoc) {
 		add(74, 14)
 	}
 	v.lists[0] = v.skillList("mobs", clr)
+	v.lists[0].Icon = func(n table.Node, size float32) {
+		v.app.drawIcon(v.app.iconLoader().Strip("icon_skills"), n.(*sdata.MobsSkill).IconID(), size)
+	}
 	v.lists[1] = v.skillList("raw", raw)
 }
 

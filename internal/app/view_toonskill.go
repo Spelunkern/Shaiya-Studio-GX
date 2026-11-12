@@ -167,6 +167,11 @@ func (v *toonSkillView) loaded(d *sdataDoc) {
 	v.lists[0] = v.newList(0, "pers", clr)
 	v.lists[1] = v.newList(1, "noos", clr)
 	v.lists[2] = v.newList(2, "raws", raw)
+	for i := 0; i < 2; i++ {
+		v.lists[i].Icon = func(n table.Node, size float32) {
+			v.app.drawIcon(v.app.iconLoader().Strip("icon_skills"), n.(*sdata.ToonSkill).IconID(), size)
+		}
+	}
 	for i := range v.sets {
 		v.fill(i)
 	}
