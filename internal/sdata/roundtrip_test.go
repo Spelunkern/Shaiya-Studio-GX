@@ -142,3 +142,24 @@ func TestNpcSkillsRoundTrip(t *testing.T) {
 	}
 	t.Logf("DB: %d skills, first %q", len(db.Skills), db.Skills[0].Name)
 }
+
+func TestSkillsRoundTrip(t *testing.T) {
+	for _, n := range []string{"SkillEp5.SData", "SkillEp6.SData"} {
+		s := NewToonSkills()
+		roundTrip(t, n, s, testFile(t, "Skill/"+n), 1252, File)
+		t.Logf("%s: %d skills, format %#x, first %q", n, len(s.Skills), s.Format, s.Skills[0].Name)
+	}
+	// This sample has 101 columns; shStudio only reads the 100-column
+	// layout and rejects it.
+	db := NewToonSkills()
+	if err := db.Read(testFile(t, "Skill/DBSkillData.SData"), 1252, Flnt); err == nil {
+		t.Fatal("101-column DBSkillData accepted")
+	}
+	ep6 := NewToonSkills()
+	ep6.Read(testFile(t, "Skill/SkillEp6.SData"), 1252, File)
+	ep6.TextHead = nil
+	if err := ep6.Read(testFile(t, "Skill/DBSkillText_USA.SData"), 1252, Ltxt); err != nil {
+		t.Fatal(err)
+	}
+	t.Logf("text on EP6 table: first %q", ep6.Skills[0].Name)
+}
