@@ -169,6 +169,10 @@ func (b *builder) file(f *File) error {
 // order (ArchiveExtractor). Folders are created as needed; a file that
 // fails is reported in the returned error, which joins all messages.
 func Extract(safPath, dest string, n Notifier) error {
+	return extract(safPath, dest, n, nil)
+}
+
+func extract(safPath, dest string, n Notifier, count *int) error {
 	data, err := os.ReadFile(SahPathOf(safPath))
 	if err != nil {
 		return fmt.Errorf("the indexes (data.sah file) cannot be read: %w", err)
@@ -196,6 +200,9 @@ func Extract(safPath, dest string, n Notifier) error {
 	root := &Folder{}
 	if err := binstream.Try(func() { err = x.folder(root, dest) }); err != nil {
 		return err
+	}
+	if count != nil {
+		*count = x.Extracted
 	}
 	if err != nil {
 		return err
@@ -296,4 +303,11 @@ func (x *extractor) file(f *File, dir string) error {
 		return fmt.Errorf("the file %q cannot be read from archive: %w", f.Name, err)
 	}
 	return nil
+}
+
+// ExtractCount is Extract that also returns the number of extracted files.
+func ExtractCount(safPath, dest string, n Notifier) (int, error) {
+	count := 0
+	err := extract(safPath, dest, n, &count)
+	return count, err
 }

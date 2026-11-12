@@ -1,0 +1,628 @@
+MENU 128
+POPUP "&File"
+  MENUITEM "&New Workspace…Ctrl+N" 0xE100 
+  MENUITEM "&Open Workspace…Ctrl+O" 0xE101 
+  MENUITEM "Open &Archive…Shift Ctrl+O" 0xE110 
+  SEPARATOR
+  MENUITEM "Close &WorkspaceCtrl+W" 0xE102 GRAYED
+  MENUITEM "&Save as Archive …Ctrl+S" 0xE105 GRAYED
+  MENUITEM "Generate &Patch …Ctrl+P" 0xE106 GRAYED
+  SEPARATOR
+  MENUITEM "E&xitCtrl+Q" 0xE141 
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  MENUITEM "RedoCtrl+Y" 0xE121 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+POPUP "&Views"
+  MENUITEM "Settings" 0xE401 
+  SEPARATOR
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+  SEPARATOR
+  MENUITEM "no data view" 0xE200 GRAYED
+POPUP "?"
+  MENUITEM "&About" 0xE140 
+MENU 130
+POPUP "&ListView"
+  MENUITEM "Icon" 0xE2A0 
+  MENUITEM "Report" 0xE2A1 
+  MENUITEM "Tile" 0xE2A4 
+MENU 132
+POPUP "shaiya client items"
+  MENUITEM "Open Workspace…" 0xE101 
+  MENUITEM "Open Archive…" 0xE110 
+  SEPARATOR
+  MENUITEM "Close Workspace" 0xE102 GRAYED
+  MENUITEM "Save as Archive …" 0xE105 GRAYED
+  MENUITEM "Generate Patch …" 0xE106 GRAYED
+MENU 133
+POPUP "shaiya server items"
+  MENUITEM "Choose repository…" 0xE150 
+  MENUITEM "Unlink repository" 0xE151 GRAYED
+MENU 134
+POPUP "SQL Server items"
+  MENUITEM "Connect …" 0xE160 
+  MENUITEM "Disconnect" 0xE161 
+MENU 164
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 
+  MENUITEM "RedoCtrl+Y" 0xE121 
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 
+  SEPARATOR
+  MENUITEM "Select AllCtrl+A" 0xE125 
+POPUP "&Tools"
+  MENUITEM "Change codepage..." 0xE435 
+MENU 165
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  MENUITEM "Save &As …" 0xE104 
+  SEPARATOR
+  MENUITEM "&InformationCtrl+I" 0xE11E GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+MENU 166
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+  MENUITEM "&Export...Ctrl+E" 0xE105 
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  MENUITEM "RedoCtrl+Y" 0xE121 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 GRAYED
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Find …Ctrl+F" 0xE128 
+  MENUITEM "Find NextCtrl+G" 0xE129 
+  SEPARATOR
+  MENUITEM "Create item" 0xE12A GRAYED
+  MENUITEM "Delete item" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  POPUP "Format"
+    MENUITEM "Episode 4" 0xE401 GRAYED
+    MENUITEM "Episode 5" 0xE402 GRAYED
+    MENUITEM "Episode 6" 0xE403 GRAYED
+    MENUITEM "Episode 6.2" 0xE404 GRAYED
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 167
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+  SEPARATOR
+  MENUITEM "&InformationCtrl+I" 0xE11E 
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+POPUP "&Tools"
+  POPUP "Format"
+    MENUITEM "File 3DE·ffect (24 bytes per vertex)" 0xE401 
+    MENUITEM "File 3DO·bject (32 bytes per vertex)" 0xE402 
+    MENUITEM "File 3DC·haracter, episo 4 (40 bytes per vertex)" 0xE403 
+    MENUITEM "File 3DC·haracter, episo 6 (48 bytes per vertex)" 0xE404 
+    MENUITEM "File V.ertex Anim, episo 4 (48 bytes per vertex)" 0xE405 
+MENU 168
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+  MENUITEM "Save &As …" 0xE104 
+  SEPARATOR
+  MENUITEM "&InformationCtrl+I" 0xE11E GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+POPUP "&Tools"
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 169
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Create itemIns" 0xE12A GRAYED
+  MENUITEM "Delete item" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  MENUITEM "3D ViewerF6" 0xE406 
+  POPUP "Format"
+    MENUITEM "Format ITM (clients 4 && 5)" 0xE401 
+    MENUITEM "Format IT2 (clients 6+)" 0xE402 
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 170
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Create itemIns" 0xE12A GRAYED
+  MENUITEM "Delete item" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  MENUITEM "3D ViewerF6" 0xE406 
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 171
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Create itemIns" 0xE12A GRAYED
+  MENUITEM "Delete item" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  MENUITEM "3D ViewerF6" 0xE406 
+  POPUP "Format"
+    MENUITEM "Format MO2 (clients 4 && 5)" 0xE401 
+    MENUITEM "Format MO4 (clients 6+)" 0xE402 
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 172
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Create itemIns" 0xE12A GRAYED
+  MENUITEM "Delete item" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  MENUITEM "3D ViewerF6" 0xE406 
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 173
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+  MENUITEM "&Export...Ctrl+E" 0xE105 
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  MENUITEM "RedoCtrl+Y" 0xE121 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 GRAYED
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Find …Ctrl+F" 0xE128 
+  MENUITEM "Find NextCtrl+G" 0xE129 
+  SEPARATOR
+  MENUITEM "Create item" 0xE12A GRAYED
+  MENUITEM "Delete item" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  POPUP "Format"
+    MENUITEM "Episode 4" 0xE401 GRAYED
+    MENUITEM "Episode 7" 0xE405 GRAYED
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 174
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "Save &As …" 0xE104 
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  MENUITEM "RedoCtrl+Y" 0xE121 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 GRAYED
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Select AllCtrl+A" 0xE125 GRAYED
+POPUP "&Tools"
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 175
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Create itemIns" 0xE12A GRAYED
+  MENUITEM "Delete itemDel" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  MENUITEM "3D ViewerF6" 0xE406 
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 176
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "Save &As …" 0xE104 
+POPUP "&Edit"
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+POPUP "&View"
+  MENUITEM "Wireframe View" 0xE165 
+  MENUITEM "Textured View" 0xE166 
+  MENUITEM "Mini-maped View" 0xE167 
+  SEPARATOR
+  MENUITEM "View dungeon" 0xE169 
+  MENUITEM "View buildings" 0xE16A 
+  MENUITEM "View shapes" 0xE16B 
+  MENUITEM "View trees" 0xE16C 
+  MENUITEM "View grass" 0xE16D 
+  MENUITEM "View anim-vert" 0xE16E 
+  SEPARATOR
+  MENUITEM "Lock Azimut" 0xE168 
+POPUP "&Tools"
+  MENUITEM "&InformationCtrl+I" 0xE11E 
+  SEPARATOR
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 177
+POPUP "&File"
+  MENUITEM "&CloseCtrl+W" 0xE102 
+  SEPARATOR
+  MENUITEM "&SaveCtrl+S" 0xE103 GRAYED
+POPUP "&Edit"
+  MENUITEM "UndoCtrl+Z" 0xE120 GRAYED
+  SEPARATOR
+  MENUITEM "CutCtrl+X" 0xE122 GRAYED
+  MENUITEM "CopyCtrl+C" 0xE123 
+  MENUITEM "PasteCtrl+V" 0xE124 GRAYED
+  SEPARATOR
+  MENUITEM "Create itemIns" 0xE12A GRAYED
+  MENUITEM "Delete itemDel" 0xE12B GRAYED
+  MENUITEM "Erase itemShift+Del" 0xE12C GRAYED
+POPUP "&Tools"
+  POPUP "Scripts"
+    MENUITEM "no script" 0x0001 GRAYED
+MENU 180
+POPUP "Show Gear Options"
+  MENUITEM "Show All classes" 0x03E8 
+  MENUITEM "Show Fighter Items" 0x03E9 
+  MENUITEM "Show Defender Items" 0x03EA 
+  MENUITEM "Show Ranger Items" 0x03EB 
+  MENUITEM "Show Archer Items" 0x03EC 
+  MENUITEM "Show Mage Items" 0x03ED 
+  MENUITEM "Show Priest Items" 0x03EE 
+  SEPARATOR
+  MENUITEM "Show All Gears" 0x03F2 
+  MENUITEM "Show Helmets" 0x03F3 
+  MENUITEM "Show Armors" 0x03F4 
+  MENUITEM "Show Pants" 0x03F5 
+  MENUITEM "Show Gantlets" 0x03F6 
+  MENUITEM "Show Boots" 0x03F7 
+  SEPARATOR
+  MENUITEM "Show All Items" 0x0410 
+  MENUITEM "Show Valid Items" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Classes" 0x041B 
+    MENUITEM "Show Effects" 0x041C 
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show Req Stats" 0x041E 
+    MENUITEM "Show Other Stats" 0x041F 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 181
+POPUP "Show Gear Options"
+  MENUITEM "Show All classes" 0x03E8 
+  MENUITEM "Show Warrior Items" 0x03E9 
+  MENUITEM "Show Guardian Items" 0x03EA 
+  MENUITEM "Show Assassin Items" 0x03EB 
+  MENUITEM "Show Hunter Items" 0x03EC 
+  MENUITEM "Show Pagan Items" 0x03ED 
+  MENUITEM "Show Oracle Items" 0x03EE 
+  SEPARATOR
+  MENUITEM "Show All Gears" 0x03F2 
+  MENUITEM "Show Caps" 0x03F3 
+  MENUITEM "Show Protectors" 0x03F4 
+  MENUITEM "Show Leggings" 0x03F5 
+  MENUITEM "Show Mufflers" 0x03F6 
+  MENUITEM "Show Walkers" 0x03F7 
+  SEPARATOR
+  MENUITEM "Show All Items" 0x0410 
+  MENUITEM "Show Valid Items" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Classes" 0x041B 
+    MENUITEM "Show Effects" 0x041C 
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Other Stats" 0x041F 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 182
+POPUP "Show Weapon Options"
+  MENUITEM "Show All classes" 0x03E8 
+  MENUITEM "Show Fighter Arms" 0x03E9 
+  MENUITEM "Show Defender Arms" 0x03EA 
+  MENUITEM "Show Ranger Arms" 0x03EB 
+  MENUITEM "Show Archer Arms" 0x03EC 
+  MENUITEM "Show Mage Arms" 0x03ED 
+  MENUITEM "Show Priest Arms" 0x03EE 
+  SEPARATOR
+  MENUITEM "Show All Arms" 0x03F2 
+  MENUITEM "Show One-Hand  Swords" 0x03F3 
+  MENUITEM "Show Two-Hands Swords" 0x03F4 
+  MENUITEM "Show One-Hand  Blunts" 0x03F7 
+  MENUITEM "Show Two-Hands Blunts" 0x03F8 
+  MENUITEM "Show Dual-Swords" 0x03F5 
+  MENUITEM "Show Spears" 0x03F6 
+  MENUITEM "Show Bows" 0x03FB 
+  MENUITEM "Show Cross-Bows" 0x03FC 
+  MENUITEM "Show Daggers" 0x03FA 
+  MENUITEM "Show Reverse-Swords" 0x03F9 
+  MENUITEM "Show Staffs" 0x03FE 
+  MENUITEM "Show Knuckles" 0x03FF 
+  MENUITEM "Show Shields" 0x0400 
+  SEPARATOR
+  MENUITEM "Show All Items" 0x0410 
+  MENUITEM "Show Valid Items" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Classes" 0x041B 
+    MENUITEM "Show Effects" 0x041C 
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Other Stats" 0x041F 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 183
+POPUP "Show Weapon Options"
+  MENUITEM "Show All classes" 0x03E8 
+  MENUITEM "Show Warrior Arms" 0x03E9 
+  MENUITEM "Show Guardian Arms" 0x03EA 
+  MENUITEM "Show Assassin Arms" 0x03EB 
+  MENUITEM "Show Hunter Arms" 0x03EC 
+  MENUITEM "Show Pagan Arms" 0x03ED 
+  MENUITEM "Show Oracle Arms" 0x03EE 
+  SEPARATOR
+  MENUITEM "Show All Arms" 0x03F2 
+  MENUITEM "Show One-Hand  Axes" 0x03F3 
+  MENUITEM "Show Two-Hands Axes" 0x03F4 
+  MENUITEM "Show One-Hand  Blunts" 0x03F7 
+  MENUITEM "Show Two-Hands Blunts" 0x03F8 
+  MENUITEM "Show Dual-Axes" 0x03F5 
+  MENUITEM "Show Spears" 0x03F6 
+  MENUITEM "Show Bows" 0x03FB 
+  MENUITEM "Show Javelins" 0x03FD 
+  MENUITEM "Show Daggers" 0x03FA 
+  MENUITEM "Show Reverse-Swords" 0x03F9 
+  MENUITEM "Show Staffs" 0x03FE 
+  MENUITEM "Show Knuckles" 0x03FF 
+  MENUITEM "Show Shields" 0x0400 
+  SEPARATOR
+  MENUITEM "Show All Items" 0x0410 
+  MENUITEM "Show Valid Items" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Classes" 0x041B 
+    MENUITEM "Show Effects" 0x041C 
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Other Stats" 0x041F 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 184
+POPUP "Show Lapis Options"
+  MENUITEM "Show All Lapis" 0x03F2 
+  MENUITEM "Show Helmets Lapis" 0x03F3 
+  MENUITEM "Show Armors Lapis" 0x03F4 
+  MENUITEM "Show Pants Lapis" 0x03F5 
+  MENUITEM "Show Gantlets Lapis" 0x03F6 
+  MENUITEM "Show Shoes Lapis" 0x03F7 
+  MENUITEM "Show Shields Lapis" 0x0400 
+  MENUITEM "Show Weapons Lapis" 0x0406 
+  MENUITEM "Show Necklaces Lapis" 0x0407 
+  MENUITEM "Show Loops Lapis" 0x0408 
+  MENUITEM "Show Rings Lapis" 0x0409 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Bearing" 0x041B 
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 185
+POPUP "Show Accessory Options"
+  MENUITEM "Show All Factions" 0x03E8 
+  MENUITEM "Show Light Items" 0x03E9 
+  MENUITEM "Show Fury Items" 0x03EA 
+  SEPARATOR
+  MENUITEM "Show All Accessories" 0x03F2 
+  MENUITEM "Show Amulets" 0x0407 
+  MENUITEM "Show Loops" 0x0408 
+  MENUITEM "Show Rings" 0x0409 
+  SEPARATOR
+  MENUITEM "Show All Items" 0x0410 
+  MENUITEM "Show Valid Items" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 186
+POPUP "Show Capes Options"
+  MENUITEM "Show All Factions" 0x03E8 
+  MENUITEM "Show Light Capes" 0x03E9 
+  MENUITEM "Show Fury Capes" 0x03EA 
+  SEPARATOR
+  MENUITEM "Show All Items" 0x0410 
+  MENUITEM "Show Valid Items" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 187
+POPUP "Show Consumables Options"
+  MENUITEM "Show All Goods" 0x03F2 
+  MENUITEM "Show Quest Items" 0x03F3 
+  MENUITEM "Show Consumables" 0x03F4 
+  SEPARATOR
+  MENUITEM "Show All Items" 0x0410 
+  MENUITEM "Show Valid Items" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 188
+POPUP "Grade Options"
+  MENUITEM "Assign new grade" 0x044C 
+  MENUITEM "Remove all items" 0x044D 
+MENU 189
+POPUP "Show Costum Options"
+  MENUITEM "Show All Customs" 0x0410 
+  MENUITEM "Show Valid Costums" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+    MENUITEM "Show Trade Stats" 0x0420 
+MENU 190
+POPUP "Show Skill Options"
+  MENUITEM "Show All Skills" 0x03E8 
+MENU 192
+POPUP "Show Skill Options"
+  MENUITEM "Show All Skills" 0x03E8 
+  MENUITEM "Show Fighter / Warrior Skills" 0x03E9 
+  MENUITEM "Show Defender / Guardian Skills" 0x03EA 
+  MENUITEM "Show Ranger / Assassin Skills" 0x03EB 
+  MENUITEM "Show Archer / Hunter Skills" 0x03EC 
+  MENUITEM "Show Mage / Pagan Skills" 0x03ED 
+  MENUITEM "Show Priest / Oracle Skills" 0x03EE 
+MENU 193
+POPUP "Show Quests Options"
+  MENUITEM "Show All Quests" 0x03E8 
+  MENUITEM "Show Fighter Quests" 0x03E9 
+  MENUITEM "Show Defender Quests" 0x03EA 
+  MENUITEM "Show Ranger Quests" 0x03EB 
+  MENUITEM "Show Archer Quests" 0x03EC 
+  MENUITEM "Show Mage Quests" 0x03ED 
+  MENUITEM "Show Priest Quests" 0x03EE 
+MENU 194
+POPUP "Monsters Options"
+  MENUITEM "Show valid mobs" 0x044C 
+  MENUITEM "Show all mobs" 0x044D 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Base Stats" 0x0424 
+    MENUITEM "Show Resistances" 0x0425 
+    MENUITEM "Show Attacks" 0x0426 
+MENU 195
+POPUP "Name Options"
+  MENUITEM "Replace ..." 0x044E 
+  MENUITEM "Copy locations" 0x044D GRAYED
+MENU 196
+POPUP "Show Pets Options"
+  MENUITEM "Show All Pets" 0x0410 
+  MENUITEM "Show Valid Pets" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+MENU 197
+POPUP "Show Wing Options"
+  MENUITEM "Show All Wings" 0x0410 
+  MENUITEM "Show Valid Wings" 0x0411 
+  SEPARATOR
+  POPUP "Show Columns"
+    MENUITEM "Show All Columns" 0x041A 
+    SEPARATOR
+    MENUITEM "Show Base Stats" 0x041D 
+    MENUITEM "Show ReqXXX Stats" 0x041E 
+MENU 198
+POPUP "Options"
+  MENUITEM "Insert Item" 0xE2A8 
+  MENUITEM "Delete Item" 0xE2A9 
+DIALOG 128
+  (DIALOGEX)
+  title 'About...'
+ACCELERATORS 128
+  '\x0e' -> 0xE100
+  '\x0f' -> 0xE101
+  Shift+Ctrl+VK_4F -> 0xE110
+  Ctrl+VK_57 -> 0xE102
+  '\x13' -> 0xE103
+  Ctrl+VK_49 -> 0xE11E
+  '\x03' -> 0xE123
+  '\x16' -> 0xE124
+  '\x01' -> 0xE125
+  '\x06' -> 0xE128
+  '\x07' -> 0xE129
+  VK_72 -> 0xE129
+  VK_75 -> 0xE406
+  '\x11' -> 0xE141
+  VK_2D -> 0xE12A
+  Shift+VK_2E -> 0xE12C

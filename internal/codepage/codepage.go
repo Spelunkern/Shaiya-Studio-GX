@@ -132,3 +132,13 @@ func Encode(s string, cp int) []byte {
 	}
 	return out
 }
+
+// Known reports whether cp is supported.
+func Known(cp int) bool {
+	switch Resolve(cp) {
+	case UTF8, UTF16LE:
+		return true
+	}
+	_, ok := encoders[Resolve(cp)]
+	return ok
+}
