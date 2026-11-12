@@ -102,3 +102,13 @@ func TestItemsSamples(t *testing.T) {
 		t.Fatalf("1-1 = %+v", it)
 	}
 }
+
+func TestCashRoundTrip(t *testing.T) {
+	s := NewCashProducts(0x500)
+	roundTrip(t, "Cash", s, testFile(t, "Cash/Cash.SData"), 1252, File)
+	t.Logf("%d products, bags %v", len(s.Products), s.Bags())
+	// shStudio writes the product codes of DB files with a NUL, which the
+	// original files do not have.
+	db := stable(t, "DBItemSellData", func() table { return NewCashProducts(0) }, testFile(t, "Cash/DBItemSellData.SData"), 1252, Flnt).(*CashProducts)
+	t.Logf("%d DB products, version %#x, first %q", len(db.Products), db.Version, db.Products[0].Code)
+}
